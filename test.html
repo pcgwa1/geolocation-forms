@@ -1,0 +1,31 @@
+<script>
+
+
+function loadWithPosition(position) {
+	console.log(position);
+	const pos = position.coords.latitude + ',' + position.coords.longitude;
+	document.getElementById('myiframe').src = 'https://docs.google.com/forms/d/e/1FAIpQLSfha70cA5IAb6re_bqQpd_4ElPOoCUjY7h-GEMxRB7vD6S2GQ/viewform?embedded=true&entry.690865291=' + pos
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+		console.log('hasgeo')
+        navigator.geolocation.getCurrentPosition(loadWithPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+
+
+window.onload = function() {
+	getLocation()
+
+}
+
+
+
+</script>
+
+
+
+<iframe  id='myiframe' src="" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
