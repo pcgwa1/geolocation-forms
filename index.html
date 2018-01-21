@@ -4,12 +4,15 @@
   function loadWithPosition(position) {
     console.log(position);
     const pos = position.coords.latitude + ',' + position.coords.longitude;
-    document.getElementById('myiframe').src = 'https://docs.google.com/forms/d/e/1FAIpQLSd4AojUonVUqRrXRFfoqWFMGIeWkzk8Zl_dmwUYLHoGZZ1sEQ/viewform?embedded=true&entry.61920873=' + pos
+    const trackingCode = window.btoa(pos);
+    const decode = atob(trackingCode);
+    console.log(decode);
+    document.getElementById('myiframe').src = 'https://docs.google.com/forms/d/e/1FAIpQLSd4AojUonVUqRrXRFfoqWFMGIeWkzk8Zl_dmwUYLHoGZZ1sEQ/viewform?embedded=true&entry.61920873=' + decode
   }
 
   function getLocation() {
     if (navigator.geolocation) {
-      console.log('hasgeo')
+      console.log('hasgeo');
       navigator.geolocation.getCurrentPosition(loadWithPosition);
     } else {
       console.log("Geolocation is not supported by this browser.");
@@ -28,4 +31,4 @@
 
 
 
-<iframe  id='myiframe' src="" width="100vw" height="100vh" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+<iframe  id='myiframe' src="" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
